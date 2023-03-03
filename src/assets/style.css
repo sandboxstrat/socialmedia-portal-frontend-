@@ -1,0 +1,25 @@
+.gamemanager--addgame{
+    cursor: pointer;
+}
+
+.gamemanager--addgame:hover{
+    background-color:rgb(221, 221, 221);
+    transition: background .2s ease-in
+}
+
+.gamemanager--addgame:not(:hover){
+    background-color:rgb(255, 255, 255);
+    transition: background .2s ease-in
+}
+
+.gamemanager--addgame:active{
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
+}
+
+a{
+    text-decoration:none;
+}
+
+#gamemanager--name{
+    font-size:2rem;
+}

@@ -1,0 +1,84 @@
+.header--icon{
+    height:45px;
+    display:block;
+}
+
+.footer {
+    bottom: 0;
+    background-color:black;
+    color: white;
+    min-height:200px;
+    padding-bottom:20px;
+    padding-top:15px;
+}
+
+.footer a{
+    color:white;
+    text-decoration:none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer a:hover{
+    color:#38C7CE;
+}
+
+.footer a:hover{
+    color: #38C7CE;
+    transition: color .2s ease-in
+}
+
+.footer a:not(:hover){
+    color:white;
+    transition: color .2s ease-in
+}
+
+.footer--nav-link{
+    font-size:1.5rem;
+}
+
+.footer--logo{
+    margin-top:50px;
+    height: 65px;
+    display:block;
+}
+
+.social--icon{
+    margin-left:20px;
+    margin-top:-40px
+}
+.social--icon--grid{
+    padding-top:5px !important;
+    padding-bottom:30px;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+html, body, #root, .App {
+    height: 100%;
+  }
+
+.game--logo{
+    max-width:300px;
+    margin-top:20px;
+    max-height:300px;
+}
+
+#root{
+    min-height:100%;
+}
+
+.ratings--icon{
+    height:75px;
+    display:inline-block;
+}
+
+.feedbackselector--card:hover{
+    border:solid;
+    border-color: #38C7CE !important;
+    background-color: #00000060 !important;
+    transition: border .2s ease-in, background-color .2s ease-in;
+    
+}
