@@ -19,24 +19,29 @@ async function searchTwitter(accessToken,searchTerm,startDate=null,endDate=null)
 
 async function getTweets( accessToken, trackerId=null, startDate=null, endDate=null ){
 
-    let url = `${domain}/admin/twitter/tracker`
-    url = trackerId!==null?url+`/${trackerId}`:url+'/null'
-    url = startDate!==null?url+'/'+encodeURIComponent(startDate):url
-    url = endDate!==null?url+'/'+encodeURIComponent(endDate):url
+    const postData = convertPostData({
+        'tracker_id':trackerId,
+        'start_date':startDate,
+        'end_date':endDate
+    })
 
+    let url = `${domain}/admin/twitter/tracker${postData}`
 
-    return await fetchResponse(url,"GET",accessToken)
+    return await fetchResponse(url,"POST",accessToken)
 
 }
 
 async function getTweetCount( accessToken, trackerId=null, startDate=null, endDate=null ){
 
-    let url = `${domain}/admin/twitter/count`
-    url = trackerId!==null?url+`/${trackerId}`:url+'/null'
-    url = startDate!==null?url+'/'+encodeURIComponent(startDate):url
-    url = endDate!==null?url+'/'+encodeURIComponent(endDate):url
+    const postData = convertPostData({
+        'tracker_id':trackerId,
+        'start_date':startDate,
+        'end_date':endDate
+    })
 
-    return await fetchResponse(url,"GET",accessToken)
+    let url = `${domain}/admin/twitter/count?${postData}`
+
+    return await fetchResponse(url,"POST",accessToken)
 
 }
 
