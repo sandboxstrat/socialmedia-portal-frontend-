@@ -25,7 +25,7 @@ async function getTweets( accessToken, trackerId=null, startDate=null, endDate=n
         'end_date':endDate
     })
 
-    let url = `${domain}/admin/twitter/tracker${postData}`
+    let url = `${domain}/admin/twitter/tracker?${postData}`
 
     return await fetchResponse(url,"POST",accessToken)
 
