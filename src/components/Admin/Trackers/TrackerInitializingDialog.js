@@ -3,8 +3,7 @@ import {Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText,  B
 
 import { useNavigate } from 'react-router-dom'
 
-function TrackerInitializingDialog(props) {
-
+const TrackerInitializingDialog = (props) => {
 
     let navigate = useNavigate()
     

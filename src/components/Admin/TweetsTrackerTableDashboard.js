@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import MUIDataTable from 'mui-datatables'
 import SelectedRowsToolbar from 'components/SelectedRowsToolbar'
 
@@ -35,13 +35,32 @@ const TrackerTweetsTableDashboard = (props) => {
                 display:"excluded",
                 
             }
-        },
-        {
+        },{
+            name: "link",
+            label: "Link",
+            options: {
+                filter: false,
+                sort: false,
+                display:"excluded",
+            }
+        },{
             name: "text",
             label: "Tweet",
             options: {
                 filter: false,
                 sort: true,
+                customBodyRender: (value,tableMeta)=>{
+                    const link = tableMeta.rowData[2]
+                    return(
+                        <a href={link} target='_blank' rel="noreferrer">
+                            <Typography 
+                                component="span" 
+                                sx={{color:"#000",'&:hover':{color:"#1976D2"}}}
+                            >
+                                {value}
+                            </Typography>
+                        </a>)
+                }
             }
         },{
             name: "retweet_count",

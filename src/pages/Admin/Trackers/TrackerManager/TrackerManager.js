@@ -49,7 +49,7 @@ const TrackerManager = () => {
     const [ tweetsData, setTweetsData ] = React.useState(null)
     const [ tweetCount, setTweetCount ] = React.useState(null)
     const [ lookbackPeriod, setlookbackPeriod ] = React.useState(30)
-    const [ trackerInitializingDialogOpen,setTrackerInitializingDialogOpen ] = React.useState(false)
+    const [ trackerInitializingDialogOpen, setTrackerInitializingDialogOpen ] = React.useState(false)
     const [ popoverData, setPopoverData ] = React.useState(
     {
         text:'',
@@ -110,10 +110,13 @@ const TrackerManager = () => {
     },[lookbackPeriod])
 
     React.useEffect(()=>{
+
         //turns on warning if there are search terms but tracker has not initilized
         if(currentTracker!==null){
             if(currentTracker.search_terms!==null&&currentTracker.search_terms!==""&&currentTracker.twitter_initialized==false){
-                setTrackerInitializingDialogOpen(true)
+
+               setTrackerInitializingDialogOpen(true)
+                
             }
         }
         
@@ -133,8 +136,14 @@ const TrackerManager = () => {
     async function saveFormData(){
         setProcessing(true)
         const accessToken = await getAccessTokenSilently()
-        await updateTracker( formData, accessToken )
+        const trackerUpdateInfo = await updateTracker( formData, accessToken )
+        setPopoverData({
+            text: "Tracker Updated",
+            type:"success",
+            status: true
+        })
         setProcessing(false)
+        setCurrentTracker( trackerUpdateInfo )
     }
 
     async function updateTrackerName(event){
@@ -167,6 +176,9 @@ const TrackerManager = () => {
                 setPopoverData = {setPopoverData}
                 text={popoverData.text}
                 type={popoverData.type}
+            />
+            <TrackerInitializingDialog
+                    open = {trackerInitializingDialogOpen}
             />
             <Grid
                     container
@@ -218,6 +230,7 @@ const TrackerManager = () => {
                                 onChange= {handleDateSelectorChange}
                             >
                                 <MenuItem value={1}><Typography variant="h5" component="h2">past day</Typography></MenuItem>
+                                <MenuItem value={3}><Typography variant="h5" component="h2">past three days</Typography></MenuItem>
                                 <MenuItem value={7}><Typography variant="h5" component="h2">past week</Typography></MenuItem>
                                 <MenuItem value={30}><Typography variant="h5" component="h2">past 30 days</Typography></MenuItem>
                                 <MenuItem value={0}><Typography variant="h5" component="h2">all days</Typography></MenuItem>
@@ -251,9 +264,7 @@ const TrackerManager = () => {
                         />
                     </Grid>
                 </Grid>
-                <TrackerInitializingDialog
-                    open = {trackerInitializingDialogOpen}
-                />
+                
             </TabPanel>
 {/*Edit Tracker Section*/}            
             <TabPanel value={tabValue} index={1}>
