@@ -34,7 +34,7 @@ const SelectedRowsToolbar = ( props ) => {
                     if(cell!==null){
                         //if cell is a link returns href
                         if(typeof cell === 'object'){
-                            return cell.props.href
+                            return cell.props.children.props.children
                         }else{
                             return cell
                         }

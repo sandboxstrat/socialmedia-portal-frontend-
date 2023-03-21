@@ -281,10 +281,10 @@ const TrackerManager = () => {
                         >
                             <Grid item lg={12}>
                             <TextField
-                                label="Search Terms"
+                                label="Search Terms (One per line)"
                                 name="search_terms"
                                 sx={{width:"100%"}}
-                                placeholder="Enter search terms"
+                                placeholder="Enter search terms (One per line)"
                                 defaultValue={formData.search_terms}
                                 multiline
                                 minRows={5}
